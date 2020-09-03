@@ -23,9 +23,9 @@ export class NavComponent implements OnInit {
     });
   }
 
+  //checks token for expiry date and if a valid token
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authService.loggedIn();
   }
 
   logout() {
