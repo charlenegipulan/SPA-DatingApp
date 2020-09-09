@@ -11,10 +11,21 @@ var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
 var forms_1 = require("@angular/forms");
+var dropdown_1 = require("ngx-bootstrap/dropdown");
+var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
-var value_component_1 = require("./value/value.component");
 var nav_component_1 = require("./nav/nav.component");
 var auth_service_1 = require("./_services/auth.service");
+var home_component_1 = require("./home/home.component");
+var register_component_1 = require("./register/register.component");
+var error_interceptor_1 = require("./_services/error.interceptor");
+var animations_1 = require("@angular/platform-browser/animations");
+var alertify_service_1 = require("./_services/alertify.service");
+var member_list_component_1 = require("./members/member-list/member-list.component");
+var lists_component_1 = require("./lists/lists.component");
+var messages_component_1 = require("./messages/messages.component");
+var routes_1 = require("./routes");
+var member_card_component_1 = require("./members/member-card/member-card.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -22,16 +33,26 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                value_component_1.ValueComponent,
-                nav_component_1.NavComponent
+                nav_component_1.NavComponent,
+                home_component_1.HomeComponent,
+                register_component_1.RegisterComponent,
+                member_list_component_1.MemberListComponent,
+                lists_component_1.ListsComponent,
+                messages_component_1.MessagesComponent,
+                member_card_component_1.MemberCardComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpClientModule,
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                animations_1.BrowserAnimationsModule,
+                dropdown_1.BsDropdownModule.forRoot(),
+                router_1.RouterModule.forRoot(routes_1.appRoutes)
             ],
             providers: [
-                auth_service_1.AuthService
+                error_interceptor_1.ErrorInterceptorProvider,
+                auth_service_1.AuthService,
+                alertify_service_1.AlertifyService
             ],
             bootstrap: [app_component_1.AppComponent]
         })
