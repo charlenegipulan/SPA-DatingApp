@@ -12,6 +12,7 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
 var forms_1 = require("@angular/forms");
 var dropdown_1 = require("ngx-bootstrap/dropdown");
+var tabs_1 = require("ngx-bootstrap/tabs");
 var router_1 = require("@angular/router");
 var angular_jwt_1 = require("@auth0/angular-jwt");
 var app_component_1 = require("./app.component");
@@ -46,7 +47,7 @@ var AppModule = /** @class */ (function () {
                 lists_component_1.ListsComponent,
                 messages_component_1.MessagesComponent,
                 member_card_component_1.MemberCardComponent,
-                member_detail_component_1.MemberDetailComponent
+                member_detail_component_1.MemberDetailComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -54,6 +55,7 @@ var AppModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 animations_1.BrowserAnimationsModule,
                 dropdown_1.BsDropdownModule.forRoot(),
+                tabs_1.TabsModule.forRoot(),
                 router_1.RouterModule.forRoot(routes_1.appRoutes),
                 angular_jwt_1.JwtModule.forRoot({
                     config: {
