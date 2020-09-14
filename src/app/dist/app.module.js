@@ -27,6 +27,7 @@ var lists_component_1 = require("./lists/lists.component");
 var messages_component_1 = require("./messages/messages.component");
 var routes_1 = require("./routes");
 var member_card_component_1 = require("./members/member-card/member-card.component");
+var member_detail_component_1 = require("./members/member-detail/member-detail.component");
 function tokenGetter() {
     return localStorage.getItem('token');
 }
@@ -45,6 +46,7 @@ var AppModule = /** @class */ (function () {
                 lists_component_1.ListsComponent,
                 messages_component_1.MessagesComponent,
                 member_card_component_1.MemberCardComponent,
+                member_detail_component_1.MemberDetailComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
