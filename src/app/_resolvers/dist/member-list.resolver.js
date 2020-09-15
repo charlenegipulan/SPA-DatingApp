@@ -6,27 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.MemberListComponent = void 0;
+exports.MemberListResolver = void 0;
 var core_1 = require("@angular/core");
-var MemberListComponent = /** @class */ (function () {
-    function MemberListComponent(userService, alertify, route) {
+var rxjs_1 = require("rxjs");
+var operators_1 = require("rxjs/operators");
+var MemberListResolver = /** @class */ (function () {
+    function MemberListResolver(userService, router, alertify) {
         this.userService = userService;
+        this.router = router;
         this.alertify = alertify;
-        this.route = route;
     }
-    MemberListComponent.prototype.ngOnInit = function () {
+    MemberListResolver.prototype.resolve = function (route) {
         var _this = this;
-        this.route.data.subscribe(function (data) {
-            _this.users = data['users'];
-        });
+        return this.userService.getUsers().pipe(operators_1.catchError(function (error) {
+            _this.alertify.error('Problem retrieving data');
+            _this.router.navigate(['/home']);
+            return rxjs_1.of(null);
+        }));
     };
-    MemberListComponent = __decorate([
-        core_1.Component({
-            selector: 'app-member-list',
-            templateUrl: './member-list.component.html',
-            styleUrls: ['./member-list.component.css']
-        })
-    ], MemberListComponent);
-    return MemberListComponent;
+    MemberListResolver = __decorate([
+        core_1.Injectable()
+    ], MemberListResolver);
+    return MemberListResolver;
 }());
-exports.MemberListComponent = MemberListComponent;
+exports.MemberListResolver = MemberListResolver;

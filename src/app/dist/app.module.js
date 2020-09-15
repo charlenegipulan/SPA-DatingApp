@@ -29,6 +29,10 @@ var messages_component_1 = require("./messages/messages.component");
 var routes_1 = require("./routes");
 var member_card_component_1 = require("./members/member-card/member-card.component");
 var member_detail_component_1 = require("./members/member-detail/member-detail.component");
+var auth_guard_1 = require("./_guards/auth.guard");
+var user_service_1 = require("./_services/user.service");
+var member_detail_resolver_1 = require("./_resolvers/member-detail.resolver");
+var member_list_resolver_1 = require("./_resolvers/member-list.resolver");
 function tokenGetter() {
     return localStorage.getItem('token');
 }
@@ -48,6 +52,7 @@ var AppModule = /** @class */ (function () {
                 messages_component_1.MessagesComponent,
                 member_card_component_1.MemberCardComponent,
                 member_detail_component_1.MemberDetailComponent,
+                member_list_component_1.MemberListComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -65,7 +70,15 @@ var AppModule = /** @class */ (function () {
                     }
                 }),
             ],
-            providers: [error_interceptor_1.ErrorInterceptorProvider, auth_service_1.AuthService, alertify_service_1.AlertifyService],
+            providers: [
+                error_interceptor_1.ErrorInterceptorProvider,
+                auth_service_1.AuthService,
+                alertify_service_1.AlertifyService,
+                auth_guard_1.AuthGuard,
+                user_service_1.UserService,
+                member_detail_resolver_1.MemberDetailResolver,
+                member_list_resolver_1.MemberListResolver,
+            ],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
