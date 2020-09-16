@@ -9,6 +9,8 @@ var auth_guard_1 = require("./_guards/auth.guard");
 var member_detail_component_1 = require("./members/member-detail/member-detail.component");
 var member_detail_resolver_1 = require("./_resolvers/member-detail.resolver");
 var member_list_resolver_1 = require("./_resolvers/member-list.resolver");
+var member_edit_resolver_1 = require("./_resolvers/member-edit.resolver");
+var member_edit_component_1 = require("./members/member-edit/member-edit.component");
 exports.appRoutes = [
     { path: '', component: home_component_1.HomeComponent },
     {
@@ -19,6 +21,7 @@ exports.appRoutes = [
             { path: 'members', component: member_list_component_1.MemberListComponent, resolve: { users: member_list_resolver_1.MemberListResolver } },
             { path: 'members/:id', component: member_detail_component_1.MemberDetailComponent,
                 resolve: { user: member_detail_resolver_1.MemberDetailResolver } },
+            { path: 'member/edit', component: member_edit_component_1.MemberEditComponent, resolve: { user: member_edit_resolver_1.MemberEditResolver } },
             { path: 'messages', component: messages_component_1.MessagesComponent },
             { path: 'lists', component: lists_component_1.ListsComponent },
         ]

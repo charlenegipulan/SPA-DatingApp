@@ -33,7 +33,9 @@ var member_detail_component_1 = require("./members/member-detail/member-detail.c
 var auth_guard_1 = require("./_guards/auth.guard");
 var user_service_1 = require("./_services/user.service");
 var member_detail_resolver_1 = require("./_resolvers/member-detail.resolver");
+var member_edit_resolver_1 = require("./_resolvers/member-edit.resolver");
 var member_list_resolver_1 = require("./_resolvers/member-list.resolver");
+var member_edit_component_1 = require("./members/member-edit/member-edit.component");
 function tokenGetter() {
     return localStorage.getItem('token');
 }
@@ -54,6 +56,7 @@ var AppModule = /** @class */ (function () {
                 member_card_component_1.MemberCardComponent,
                 member_detail_component_1.MemberDetailComponent,
                 member_list_component_1.MemberListComponent,
+                member_edit_component_1.MemberEditComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -80,6 +83,7 @@ var AppModule = /** @class */ (function () {
                 user_service_1.UserService,
                 member_detail_resolver_1.MemberDetailResolver,
                 member_list_resolver_1.MemberListResolver,
+                member_edit_resolver_1.MemberEditResolver,
             ],
             bootstrap: [app_component_1.AppComponent]
         })
