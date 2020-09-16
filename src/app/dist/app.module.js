@@ -15,6 +15,7 @@ var dropdown_1 = require("ngx-bootstrap/dropdown");
 var tabs_1 = require("ngx-bootstrap/tabs");
 var router_1 = require("@angular/router");
 var angular_jwt_1 = require("@auth0/angular-jwt");
+var ngx_gallery_1 = require("@kolkov/ngx-gallery");
 var app_component_1 = require("./app.component");
 var nav_component_1 = require("./nav/nav.component");
 var auth_service_1 = require("./_services/auth.service");
@@ -62,6 +63,7 @@ var AppModule = /** @class */ (function () {
                 dropdown_1.BsDropdownModule.forRoot(),
                 tabs_1.TabsModule.forRoot(),
                 router_1.RouterModule.forRoot(routes_1.appRoutes),
+                ngx_gallery_1.NgxGalleryModule,
                 angular_jwt_1.JwtModule.forRoot({
                     config: {
                         tokenGetter: tokenGetter,
