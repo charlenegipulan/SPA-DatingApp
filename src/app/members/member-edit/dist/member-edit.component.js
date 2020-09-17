@@ -9,8 +9,9 @@ exports.__esModule = true;
 exports.MemberEditComponent = void 0;
 var core_1 = require("@angular/core");
 var MemberEditComponent = /** @class */ (function () {
-    function MemberEditComponent(route) {
+    function MemberEditComponent(route, alertify) {
         this.route = route;
+        this.alertify = alertify;
     }
     MemberEditComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -18,6 +19,14 @@ var MemberEditComponent = /** @class */ (function () {
             _this.user = data['user'];
         });
     };
+    MemberEditComponent.prototype.updateUser = function () {
+        console.log(this.user);
+        this.alertify.success('Profile updated successfully');
+        this.editForm.reset(this.user);
+    };
+    __decorate([
+        core_1.ViewChild('editForm', { static: true })
+    ], MemberEditComponent.prototype, "editForm");
     MemberEditComponent = __decorate([
         core_1.Component({
             selector: 'app-member-edit',
