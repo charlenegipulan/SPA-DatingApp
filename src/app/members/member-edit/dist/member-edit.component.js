@@ -13,6 +13,11 @@ var MemberEditComponent = /** @class */ (function () {
         this.route = route;
         this.alertify = alertify;
     }
+    MemberEditComponent.prototype.unloadNotification = function ($event) {
+        if (this.editForm.dirty) {
+            $event.returnValue = true;
+        }
+    };
     MemberEditComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.data.subscribe(function (data) {
@@ -27,6 +32,9 @@ var MemberEditComponent = /** @class */ (function () {
     __decorate([
         core_1.ViewChild('editForm', { static: true })
     ], MemberEditComponent.prototype, "editForm");
+    __decorate([
+        core_1.HostListener('window:beforeunload', ['$event'])
+    ], MemberEditComponent.prototype, "unloadNotification");
     MemberEditComponent = __decorate([
         core_1.Component({
             selector: 'app-member-edit',
