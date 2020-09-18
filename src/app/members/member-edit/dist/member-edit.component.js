@@ -9,9 +9,11 @@ exports.__esModule = true;
 exports.MemberEditComponent = void 0;
 var core_1 = require("@angular/core");
 var MemberEditComponent = /** @class */ (function () {
-    function MemberEditComponent(route, alertify) {
+    function MemberEditComponent(route, alertify, userService, authService) {
         this.route = route;
         this.alertify = alertify;
+        this.userService = userService;
+        this.authService = authService;
     }
     MemberEditComponent.prototype.unloadNotification = function ($event) {
         if (this.editForm.dirty) {
@@ -25,9 +27,14 @@ var MemberEditComponent = /** @class */ (function () {
         });
     };
     MemberEditComponent.prototype.updateUser = function () {
-        console.log(this.user);
-        this.alertify.success('Profile updated successfully');
-        this.editForm.reset(this.user);
+        var _this = this;
+        this.userService.updateUser(this.authService.decodedToken.nameid, this.user)
+            .subscribe(function (next) {
+            _this.alertify.success('Profile updated successfully');
+            _this.editForm.reset(_this.user);
+        }, function (error) {
+            _this.alertify.error(error);
+        });
     };
     __decorate([
         core_1.ViewChild('editForm', { static: true })
