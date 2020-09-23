@@ -37,6 +37,7 @@ var member_edit_resolver_1 = require("./_resolvers/member-edit.resolver");
 var member_list_resolver_1 = require("./_resolvers/member-list.resolver");
 var member_edit_component_1 = require("./members/member-edit/member-edit.component");
 var prevent_unsaved_changes_guard_1 = require("./_guards/prevent-unsaved-changes.guard");
+var photo_editor_component_1 = require("./members/photo-editor/photo-editor.component");
 function tokenGetter() {
     return localStorage.getItem('token');
 }
@@ -58,6 +59,7 @@ var AppModule = /** @class */ (function () {
                 member_detail_component_1.MemberDetailComponent,
                 member_list_component_1.MemberListComponent,
                 member_edit_component_1.MemberEditComponent,
+                photo_editor_component_1.PhotoEditorComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
