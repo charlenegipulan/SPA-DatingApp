@@ -8,10 +8,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.PhotoEditorComponent = void 0;
 var core_1 = require("@angular/core");
+var ng2_file_upload_1 = require("ng2-file-upload");
+var environment_1 = require("src/environments/environment");
 var PhotoEditorComponent = /** @class */ (function () {
-    function PhotoEditorComponent() {
+    function PhotoEditorComponent(authService) {
+        this.authService = authService;
+        this.baseUrl = environment_1.environment.apiUrl;
     }
     PhotoEditorComponent.prototype.ngOnInit = function () {
+        this.initializeUploader();
+    };
+    PhotoEditorComponent.prototype.fileOverBase = function (e) {
+        this.hasBaseDropZoneOver = e;
+    };
+    PhotoEditorComponent.prototype.initializeUploader = function () {
+        this.uploader = new ng2_file_upload_1.FileUploader({
+            url: this.baseUrl + 'users/' + this.authService.decodedToken.nameid + '/photos',
+            authToken: 'Bearer ' + localStorage.getItem('token'),
+            isHTML5: true,
+            allowedFileType: ['images'],
+            removeAfterUpload: true,
+            autoUpload: false,
+            maxFileSize: 10 * 1024 * 1024
+        });
     };
     __decorate([
         core_1.Input()

@@ -16,6 +16,7 @@ var tabs_1 = require("ngx-bootstrap/tabs");
 var router_1 = require("@angular/router");
 var angular_jwt_1 = require("@auth0/angular-jwt");
 var ngx_gallery_1 = require("@kolkov/ngx-gallery");
+var ng2_file_upload_1 = require("ng2-file-upload");
 var app_component_1 = require("./app.component");
 var nav_component_1 = require("./nav/nav.component");
 var auth_service_1 = require("./_services/auth.service");
@@ -70,6 +71,7 @@ var AppModule = /** @class */ (function () {
                 tabs_1.TabsModule.forRoot(),
                 router_1.RouterModule.forRoot(routes_1.appRoutes),
                 ngx_gallery_1.NgxGalleryModule,
+                ng2_file_upload_1.FileUploadModule,
                 angular_jwt_1.JwtModule.forRoot({
                     config: {
                         tokenGetter: tokenGetter,
