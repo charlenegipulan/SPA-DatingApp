@@ -25,6 +25,7 @@ var PhotoEditorComponent = /** @class */ (function () {
         this.hasBaseDropZoneOver = e;
     };
     PhotoEditorComponent.prototype.initializeUploader = function () {
+        var _this = this;
         this.uploader = new ng2_file_upload_1.FileUploader({
             url: this.baseUrl + 'users/' + this.authService.decodedToken.nameid + '/photos',
             authToken: 'Bearer ' + localStorage.getItem('token'),
@@ -33,6 +34,20 @@ var PhotoEditorComponent = /** @class */ (function () {
             autoUpload: false,
             maxFileSize: 10 * 1024 * 1024
         });
+        this.uploader.onSuccessItem = function (item, response, status, headers) {
+            if (response) {
+                var res = JSON.parse(response);
+                // we are essentially building a photo object from the response from the server
+                var photo = {
+                    id: res.id,
+                    url: res.url,
+                    dateAdded: res.dateAdded,
+                    description: res.description,
+                    isMain: res.isMain
+                };
+                _this.photos.push(photo);
+            }
+        };
     };
     __decorate([
         core_1.Input()
