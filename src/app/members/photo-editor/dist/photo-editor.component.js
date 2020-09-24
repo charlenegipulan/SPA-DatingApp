@@ -17,6 +17,9 @@ var PhotoEditorComponent = /** @class */ (function () {
     }
     PhotoEditorComponent.prototype.ngOnInit = function () {
         this.initializeUploader();
+        this.uploader.onBeforeUploadItem = function (item) {
+            item.withCredentials = false;
+        };
     };
     PhotoEditorComponent.prototype.fileOverBase = function (e) {
         this.hasBaseDropZoneOver = e;
@@ -25,8 +28,7 @@ var PhotoEditorComponent = /** @class */ (function () {
         this.uploader = new ng2_file_upload_1.FileUploader({
             url: this.baseUrl + 'users/' + this.authService.decodedToken.nameid + '/photos',
             authToken: 'Bearer ' + localStorage.getItem('token'),
-            isHTML5: true,
-            allowedFileType: ['images'],
+            allowedFileType: ['image'],
             removeAfterUpload: true,
             autoUpload: false,
             maxFileSize: 10 * 1024 * 1024
