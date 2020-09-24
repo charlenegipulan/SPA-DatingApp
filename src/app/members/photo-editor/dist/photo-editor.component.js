@@ -11,8 +11,10 @@ var core_1 = require("@angular/core");
 var ng2_file_upload_1 = require("ng2-file-upload");
 var environment_1 = require("src/environments/environment");
 var PhotoEditorComponent = /** @class */ (function () {
-    function PhotoEditorComponent(authService) {
+    function PhotoEditorComponent(authService, userService, alertify) {
         this.authService = authService;
+        this.userService = userService;
+        this.alertify = alertify;
         this.baseUrl = environment_1.environment.apiUrl;
     }
     PhotoEditorComponent.prototype.ngOnInit = function () {
@@ -48,6 +50,14 @@ var PhotoEditorComponent = /** @class */ (function () {
                 _this.photos.push(photo);
             }
         };
+    };
+    PhotoEditorComponent.prototype.setMainPhoto = function (photo) {
+        var _this = this;
+        this.userService.setMainPhoto(this.authService.decodedToken.nameid, photo.id).subscribe(function () {
+            console.log('successfully set to main');
+        }, function (error) {
+            _this.alertify.error(error);
+        });
     };
     __decorate([
         core_1.Input()

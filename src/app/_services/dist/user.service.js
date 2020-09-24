@@ -23,6 +23,9 @@ var UserService = /** @class */ (function () {
     UserService.prototype.updateUser = function (id, user) {
         return this.http.put(this.baseUrl + 'users/' + id, user);
     };
+    UserService.prototype.setMainPhoto = function (userId, id) {
+        return this.http.post(this.baseUrl + 'users/' + userId + '/photos/' + id + '/setMain', {});
+    };
     UserService = __decorate([
         core_1.Injectable({
             providedIn: 'root'
