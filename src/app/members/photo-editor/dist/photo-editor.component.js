@@ -54,7 +54,9 @@ var PhotoEditorComponent = /** @class */ (function () {
     PhotoEditorComponent.prototype.setMainPhoto = function (photo) {
         var _this = this;
         this.userService.setMainPhoto(this.authService.decodedToken.nameid, photo.id).subscribe(function () {
-            console.log('successfully set to main');
+            _this.currentMain = _this.photos.filter(function (p) { return p.isMain === true; })[0];
+            _this.currentMain.isMain = false;
+            photo.isMain = true;
         }, function (error) {
             _this.alertify.error(error);
         });
