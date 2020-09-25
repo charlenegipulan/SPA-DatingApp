@@ -15,6 +15,7 @@ var PhotoEditorComponent = /** @class */ (function () {
         this.authService = authService;
         this.userService = userService;
         this.alertify = alertify;
+        this.getMemberPhotoChange = new core_1.EventEmitter();
         this.baseUrl = environment_1.environment.apiUrl;
     }
     PhotoEditorComponent.prototype.ngOnInit = function () {
@@ -57,6 +58,7 @@ var PhotoEditorComponent = /** @class */ (function () {
             _this.currentMain = _this.photos.filter(function (p) { return p.isMain === true; })[0];
             _this.currentMain.isMain = false;
             photo.isMain = true;
+            _this.getMemberPhotoChange.emit(photo.url);
         }, function (error) {
             _this.alertify.error(error);
         });
@@ -64,6 +66,9 @@ var PhotoEditorComponent = /** @class */ (function () {
     __decorate([
         core_1.Input()
     ], PhotoEditorComponent.prototype, "photos");
+    __decorate([
+        core_1.Output()
+    ], PhotoEditorComponent.prototype, "getMemberPhotoChange");
     PhotoEditorComponent = __decorate([
         core_1.Component({
             selector: 'app-photo-editor',

@@ -36,6 +36,9 @@ var MemberEditComponent = /** @class */ (function () {
             _this.alertify.error(error);
         });
     };
+    MemberEditComponent.prototype.updateMainPhoto = function (photoUrl) {
+        this.user.photoUrl = photoUrl;
+    };
     __decorate([
         core_1.ViewChild('editForm', { static: true })
     ], MemberEditComponent.prototype, "editForm");
