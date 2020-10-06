@@ -24,7 +24,9 @@ var AuthService = /** @class */ (function () {
             var user = response;
             if (user) {
                 localStorage.setItem('token', user.token);
+                localStorage.setItem('user', JSON.stringify(user.user));
                 _this.decodedToken = _this.jwtHelper.decodeToken(user.token);
+                _this.currentUser = user.user;
                 console.log(_this.decodedToken);
             }
         }));

@@ -9,13 +9,35 @@ exports.__esModule = true;
 exports.NavComponent = void 0;
 var core_1 = require("@angular/core");
 var NavComponent = /** @class */ (function () {
-    function NavComponent() {
+    function NavComponent(authService, alertify, router) {
+        this.authService = authService;
+        this.alertify = alertify;
+        this.router = router;
         this.model = {};
     }
     NavComponent.prototype.ngOnInit = function () {
     };
     NavComponent.prototype.login = function () {
-        console.log(this.model);
+        var _this = this;
+        this.authService.login(this.model).subscribe(function (next) {
+            _this.alertify.success('logged in successfully');
+        }, function (error) {
+            _this.alertify.error(error);
+        }, function () {
+            _this.router.navigate(['/members']);
+        });
+    };
+    //checks token for expiry date and if a valid token
+    NavComponent.prototype.loggedIn = function () {
+        return this.authService.loggedIn();
+    };
+    NavComponent.prototype.logout = function () {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.authService.decodedToken = null;
+        this.authService.currentUser = null;
+        this.alertify.message('logged out');
+        this.router.navigate(['/home']);
     };
     NavComponent = __decorate([
         core_1.Component({
