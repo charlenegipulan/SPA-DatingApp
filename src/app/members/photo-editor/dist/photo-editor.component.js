@@ -59,6 +59,8 @@ var PhotoEditorComponent = /** @class */ (function () {
             _this.currentMain.isMain = false;
             photo.isMain = true;
             _this.authService.changeMemberPhoto(photo.url);
+            _this.authService.currentUser.photoUrl = photo.url;
+            localStorage.setItem('user', JSON.stringify(_this.authService.currentUser));
         }, function (error) {
             _this.alertify.error(error);
         });
