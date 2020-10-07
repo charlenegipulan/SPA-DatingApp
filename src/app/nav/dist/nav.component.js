@@ -16,6 +16,8 @@ var NavComponent = /** @class */ (function () {
         this.model = {};
     }
     NavComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.authService.currentPhotoUrl.subscribe(function (photoUrl) { return _this.photoUrl = photoUrl; });
     };
     NavComponent.prototype.login = function () {
         var _this = this;

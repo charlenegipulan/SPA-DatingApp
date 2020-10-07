@@ -26,6 +26,7 @@ var AppComponent = /** @class */ (function () {
         }
         if (user) {
             this.authService.currentUser = user;
+            this.authService.changeMemberPhoto(user.photoUrl);
         }
     };
     AppComponent = __decorate([

@@ -25,6 +25,7 @@ var MemberEditComponent = /** @class */ (function () {
         this.route.data.subscribe(function (data) {
             _this.user = data['user'];
         });
+        this.authService.currentPhotoUrl.subscribe(function (photoUrl) { return _this.photoUrl = photoUrl; });
     };
     MemberEditComponent.prototype.updateUser = function () {
         var _this = this;
