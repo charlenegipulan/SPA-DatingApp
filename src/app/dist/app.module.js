@@ -66,6 +66,7 @@ var AppModule = /** @class */ (function () {
                 platform_browser_1.BrowserModule,
                 http_1.HttpClientModule,
                 forms_1.FormsModule,
+                forms_1.ReactiveFormsModule,
                 animations_1.BrowserAnimationsModule,
                 dropdown_1.BsDropdownModule.forRoot(),
                 tabs_1.TabsModule.forRoot(),
