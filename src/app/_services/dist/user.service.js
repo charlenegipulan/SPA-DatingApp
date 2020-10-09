@@ -26,6 +26,9 @@ var UserService = /** @class */ (function () {
     UserService.prototype.setMainPhoto = function (userId, id) {
         return this.http.post(this.baseUrl + 'users/' + userId + '/photos/' + id + '/setMain', {});
     };
+    UserService.prototype.deletePhoto = function (userId, id) {
+        return this.http["delete"](this.baseUrl + 'users/' + userId + '/photos/' + id);
+    };
     UserService = __decorate([
         core_1.Injectable({
             providedIn: 'root'

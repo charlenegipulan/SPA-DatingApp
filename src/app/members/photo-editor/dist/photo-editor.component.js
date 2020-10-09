@@ -65,6 +65,17 @@ var PhotoEditorComponent = /** @class */ (function () {
             _this.alertify.error(error);
         });
     };
+    PhotoEditorComponent.prototype.deletePhoto = function (id) {
+        var _this = this;
+        this.alertify.confirm('Are you sure you want to delete this photo?', function () {
+            _this.userService.deletePhoto(_this.authService.decodedToken.nameid, id).subscribe(function () {
+                _this.photos.splice(_this.photos.findIndex(function (p) { return p.id; }), 1);
+                _this.alertify.success('photo has been deleted');
+            }, function (error) {
+                _this.alertify.error('Failed to delete the photo');
+            });
+        });
+    };
     __decorate([
         core_1.Input()
     ], PhotoEditorComponent.prototype, "photos");
