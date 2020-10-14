@@ -10,18 +10,22 @@ exports.RegisterComponent = void 0;
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var RegisterComponent = /** @class */ (function () {
-    function RegisterComponent(authService, alertify) {
+    function RegisterComponent(authService, alertify, fb) {
         this.authService = authService;
         this.alertify = alertify;
+        this.fb = fb;
         this.cancelRegister = new core_1.EventEmitter();
         this.model = {};
     }
     RegisterComponent.prototype.ngOnInit = function () {
-        this.registerForm = new forms_1.FormGroup({
-            username: new forms_1.FormControl('', forms_1.Validators.required),
-            password: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(8)]),
-            confirmPassword: new forms_1.FormControl('', forms_1.Validators.required)
-        }, this.passwordMatchValidator);
+        this.createRegisterForm();
+    };
+    RegisterComponent.prototype.createRegisterForm = function () {
+        this.registerForm = this.fb.group({
+            username: ['', forms_1.Validators.required],
+            password: ['', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(8)]],
+            confirmPassword: ['', forms_1.Validators.required]
+        }, { validator: this.passwordMatchValidator });
     };
     //method to compare password and confirm password
     RegisterComponent.prototype.passwordMatchValidator = function (g) {
