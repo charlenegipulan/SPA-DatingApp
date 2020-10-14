@@ -18,7 +18,7 @@ var RegisterComponent = /** @class */ (function () {
     }
     RegisterComponent.prototype.ngOnInit = function () {
         this.registerForm = new forms_1.FormGroup({
-            username: new forms_1.FormControl('Hello', forms_1.Validators.required),
+            username: new forms_1.FormControl('', forms_1.Validators.required),
             password: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(8)]),
             confirmPassword: new forms_1.FormControl('', forms_1.Validators.required)
         }, this.passwordMatchValidator);
