@@ -22,7 +22,12 @@ var RegisterComponent = /** @class */ (function () {
     };
     RegisterComponent.prototype.createRegisterForm = function () {
         this.registerForm = this.fb.group({
+            gender: ['male'],
             username: ['', forms_1.Validators.required],
+            knownAs: ['', forms_1.Validators.required],
+            dateOfBirth: [null, forms_1.Validators.required],
+            city: ['', forms_1.Validators.required],
+            country: ['', forms_1.Validators.required],
             password: ['', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(8)]],
             confirmPassword: ['', forms_1.Validators.required]
         }, { validator: this.passwordMatchValidator });
