@@ -13,6 +13,7 @@ var http_1 = require("@angular/common/http");
 var forms_1 = require("@angular/forms");
 var dropdown_1 = require("ngx-bootstrap/dropdown");
 var tabs_1 = require("ngx-bootstrap/tabs");
+var datepicker_1 = require("ngx-bootstrap/datepicker");
 var router_1 = require("@angular/router");
 var angular_jwt_1 = require("@auth0/angular-jwt");
 var ngx_gallery_1 = require("@kolkov/ngx-gallery");
@@ -65,10 +66,12 @@ var AppModule = /** @class */ (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpClientModule,
+                animations_1.BrowserAnimationsModule,
                 forms_1.FormsModule,
                 forms_1.ReactiveFormsModule,
                 animations_1.BrowserAnimationsModule,
                 dropdown_1.BsDropdownModule.forRoot(),
+                datepicker_1.BsDatepickerModule.forRoot(),
                 tabs_1.TabsModule.forRoot(),
                 router_1.RouterModule.forRoot(routes_1.appRoutes),
                 ngx_gallery_1.NgxGalleryModule,

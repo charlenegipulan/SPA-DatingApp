@@ -18,7 +18,10 @@ var RegisterComponent = /** @class */ (function () {
         this.model = {};
     }
     RegisterComponent.prototype.ngOnInit = function () {
-        this.createRegisterForm();
+        this.bsConfig = {
+            containerClass: 'theme-red'
+        },
+            this.createRegisterForm();
     };
     RegisterComponent.prototype.createRegisterForm = function () {
         this.registerForm = this.fb.group({
